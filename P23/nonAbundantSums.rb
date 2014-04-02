@@ -16,3 +16,18 @@ def getDivSums(n)
 	return total			
 end
 
+#return array of abundant numbers under a limit
+def getAbundants(cap)
+	#init array
+	abs = []
+	#for every number up to cap
+	for i in 1..cap
+		#if number is abundant
+		if isAbundant(i)
+			#add number to abs array
+			abs << i
+		end
+	end
+	#return abs
+	return abs
+end
