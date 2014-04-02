@@ -57,3 +57,23 @@ def nonSumAb(n, abs)
 	#if no abundants can be added to get n return true
 	return true
 end
+
+#total all numbers under cap that cant be sum of two abundants
+def totNonAbSums(cap)
+	#init total
+	total = 0
+	#init abs
+	abs = getAbundants(cap)
+	#for every number up to cap
+	for i in 1..cap
+		#if i is not a sum of abundants
+		if nonSumAb(i, abs)
+			#add i to total
+			total += i
+		end
+	end
+	#return total
+	return total
+end
+
+puts totNonAbSums(28123)
