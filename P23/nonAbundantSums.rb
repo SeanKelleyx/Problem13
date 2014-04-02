@@ -31,3 +31,8 @@ def getAbundants(cap)
 	#return abs
 	return abs
 end
+
+#return true if number is abundant, false if not
+def isAbundant(n)
+	return getDivSums(n) > n
+end
