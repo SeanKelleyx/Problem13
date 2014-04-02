@@ -41,12 +41,13 @@ def totNonAbSums(cap)
 	#for every number up to cap
 	for i in cap.downto(1)
 		#reduce abs by removing numbers higher than i
-		abs = abs.reject {|x| x > i}
+		abs.reject! {|x| x > i/2}
 		#if i is not a sum of abundants
 		if nonSumAb(i, abs)
 			#add i to total
 			total += i
 		end
+		puts i
 	end
 	#return total
 	return total
