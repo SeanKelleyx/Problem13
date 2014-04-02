@@ -20,8 +20,8 @@ end
 def getAbundants(cap)
 	#init array
 	abs = []
-	#for every number up to cap
-	for i in 1..cap
+	#for every number under cap
+	for i in 1..cap-1
 		#if number is abundant
 		if isAbundant(i)
 			#add number to abs array
@@ -35,4 +35,25 @@ end
 #return true if number is abundant, false if not
 def isAbundant(n)
 	return getDivSums(n) > n
+end
+
+#return true if number is in array, false if not
+def isInArray(n, arr)
+	return arr.include? n
+end
+
+#return true if n cannot be sum of two abundant nums false if not
+def nonSumAb(n, abs)
+	#init smallAbs
+	smallAbs = abs.reject {|x| x > n}
+	#for evey ab in smallAbs
+	for i in smallAbs
+		#if it can be added to another abundant to get n
+		if isInArray(n-i, smallAbs)
+			#return value false
+			return false	
+		end
+	end
+	#if no abundants can be added to get n return true
+	return true
 end
