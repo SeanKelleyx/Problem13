@@ -45,3 +45,5 @@ def writeAbsToCSV(cap)
 		csv << getAbundants(cap)
 	end
 end
+
+writeAbsToCSV(28123)
