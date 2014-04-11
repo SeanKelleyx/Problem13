@@ -1,25 +1,33 @@
 #! /usr/bin/ruby
 
-def spiral(n)
-	spiral = Array.new(n) {Array.new(n, nil)}     # n x n array of nils
-	runs = n.downto(0).each_cons(2).to_a.flatten  # n==5; [5,4,4,3,3,2,2,1,1,0]
-	delta = [[1,0], [0,1], [-1,0], [0,-1]].cycle
-	x, y, value = -1, 0, -1
-	for run in runs
-		dx, dy = delta.next
-		run.times { spiral[y+=dy][x+=dx] = (value+=1) }
-	end
-	for x in spiral
-		for y in x
-			y = n*n - y
+def odd_spiral(size, row, col)
+	if row == size - 1 
+		return size**2 - col
+        elsif col == size - 1 
+	 	return (size - 1)**2 + row+1
+      	else even_spiral(size - 1, row, col)
+      	end
+end
+
+def even_spiral(size, row, col)
+        if row == 0 
+		return size**2 - size + col+1
+      	elsif col == 0 
+	 	return size**2 - size - row+1
+      	else odd_spiral(size - 1, row - 1, col - 1)
+      	end
+end
+total = 0
+size = (ARGV[0] || 8).to_i
+(0...size).each do |row|
+	(0...size).each do |col|
+		v = size % 2 == 0 ? even_spiral(size, row, col) :
+                	            odd_spiral(size, row, col)
+   		print v.to_s.rjust((size**2 - 1).to_s.length), ' '
+		if row == col || size-1-col == row
+			total += v	
 		end
-	end 
-	spiral
+      	end
+      	puts
 end
- 
-def print_matrix(m)
-  max = m.flatten.map{|x| x.to_s.size}.max
-  m.each {|row| puts row.map {|x| "%#{max}s " % x}.join}
-end
- 
-print_matrix spiral(5)
+puts total
