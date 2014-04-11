@@ -21,13 +21,10 @@ total = 0
 size = (ARGV[0] || 8).to_i
 (0...size).each do |row|
 	(0...size).each do |col|
-		v = size % 2 == 0 ? even_spiral(size, row, col) :
+		if row == col || size -1 -col ==row
+			total += size % 2 == 0 ? even_spiral(size, row, col) :
                 	            odd_spiral(size, row, col)
-   		print v.to_s.rjust((size**2 - 1).to_s.length), ' '
-		if row == col || size-1-col == row
-			total += v	
 		end
       	end
-      	puts
 end
 puts total
