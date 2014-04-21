@@ -1,22 +1,24 @@
 #! /usr/bin/ruby
 
-def isPrime(num)
-	for x in 2..(num/2).floor
-		if num%x == 0
-			return false
-		end
-	end
-	return true
-end
+sequenceLength = 0
 
-def getBiggestPrime(limit)
-	biggest = 0
-	for x in 1..limit
-		if isPrime(x)
-			biggest = x
-		end
+for x in 1000.downto(1)
+	if (sequenceLength >= x)
+		break
 	end
-	return biggest
+	foundRemainders = [x]
+	value =1
+	position = 0
+	while (foundRemainders[value] == 0 && value != 0)
+		foundRemainders[value] = position
+		value *= 10
+		value %= x
+		position += 1
+	end
+	if (position - foundRemainders[value] > sequenceLength)
+		sequenceLength  = position - foundRemainders[value]
+	end
 end
-
-puts getBiggestPrime(999)
+puts sequenceLength
+	
+	
