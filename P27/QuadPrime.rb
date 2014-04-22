@@ -1,7 +1,10 @@
 #! /usr/bin/ruby
 
 def isPrime(y)
-	for x in 2..(y/2).floor
+	if y<2
+		return false
+	end
+	for x in 2..(y-1)
 		if y%x == 0
 			return false 
 		end
@@ -10,20 +13,18 @@ def isPrime(y)
 end
 
 def mainfunc()
-	a, b = -999, -999
 	besta, bestb = 0, 0
 	mostconsec = 0
-	while a < 1000
-		puts "testing a = #{a}"
-		while b < 1000
-			run = true
+	for a in -999..999
+		for b in -999..999
+			prime = true
 			n=0
-			while run
+			while prime
 				test = (n**2)+(a*n)+b
 				if isPrime(test)
 					n += 1
 				else
-					run = false
+					prime = false
 				end
 			end
 			if n > mostconsec
@@ -32,14 +33,8 @@ def mainfunc()
 				besta = a
 				bestb = b
 			end
-			b+=1
 		end
-		b = -999
-		a+=1
 	end
-	puts besta
-	puts bestb
-	puts mostconsec
 	puts besta*bestb
 end
 
