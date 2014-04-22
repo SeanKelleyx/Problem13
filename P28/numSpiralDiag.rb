@@ -17,6 +17,7 @@ def even_spiral(size, row, col)
       	else odd_spiral(size - 1, row - 1, col - 1)
       	end
 end
+
 total = 0
 size = (ARGV[0] || 8).to_i
 (0...size).each do |row|
