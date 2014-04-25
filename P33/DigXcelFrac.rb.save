@@ -1,0 +1,28 @@
+#! /usr/bin/ruby
+
+
+def test(x, y)
+	x1 = x.to_s.chars.map(&:to_i)
+	y1 = y.to_s.chars.map(&:to_i)
+	if y1.include? x1[0] 
+		y1 = y1.delete_at y1.index(x1[0])
+		x1 = x1[1]  
+		if y1 == 
+		elsif (x/y) == (x1/y1)
+			return [x, y]
+		end
+	elsif y1.include? x1[1]
+		y1 = y1.delete_at y1.index(x1[1])
+		x1 = x1[0]
+		if (x/y) == (x1/y1)
+			return [x, y]
+		end
+	end
+end
+
+arr =[]
+for y in 10..99
+	for x in 10..y-1
+		arr << test(x, y)
+	end
+end
