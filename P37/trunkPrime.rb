@@ -44,7 +44,6 @@ def run
 				end
 			end
 			if add
-				puts i
 				total += i
 				count += 1
 			end
