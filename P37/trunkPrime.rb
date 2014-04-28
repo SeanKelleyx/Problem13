@@ -3,6 +3,8 @@
 def isPrime(x)
 	if x == 1
 		return false
+	elsif x == 2
+		return true
 	end
         for y in 2..Math.sqrt(x).ceil
                 if x%y == 0
