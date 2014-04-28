@@ -1,12 +1,13 @@
+
 #! /usr/bin/ruby
 
 def getCirNums(x)
-	x1 = x.to_s.chars.map(&:to_i)
+	xArr = x.to_s.chars.map(&:to_i)
 	cirs = [x]
-	for y in 1..x1.length-1
-		x1 << x1[0]
-		x1 = x1.shift
-		temp =  x1.inject{|a,i| a*10 + i}
+	(xArr.length-1).times do
+		xArr << xArr[0]
+		xArr.shift
+		temp =  xArr.inject{|a,i| a*10 + i}
 		cirs << temp
 	end
 	return cirs
