@@ -26,23 +26,19 @@ def getPrimes
 	arr = []
 	for x in 10..1000000
 		if isPrime(x)
-			arr << x
+			cirs = getCirNums(x)
+			add = true
+			for y in cirs
+				if !(isPrime(y))
+					add = false
+				end
+			end
+			if add
+				arr << x
+			end
 		end
 	end
-	return arr
+	return arr.count+4
 end
 
-def checkPrimes()
-	count = 4
-	primes = getPrimes()
-	for x in primes
-		cirs = getCirNums(x)
-		if (cirs - primes).length == 0
-			count += cirs.length
-			primes = primes - cirs
-		end
-	end
-	puts count
-end
-
-checkPrimes()
+puts getPrimes()
