@@ -4,12 +4,12 @@ def isEven?(x)
 	return Math.sqrt(x)%1 == 0
 end
 
-def equalsPerim?(a, b, c, perim)
-	return a + b + c == perim
+def getPerim(a, b, c)
+	return a + b + c 
 end
 
 def getCsq(a, b)
-	return a**2 + b**2
+	return a*a + b*b
 end
 
 def getRt(x)
@@ -18,12 +18,16 @@ end
 
 def getNumSols(perim)
 	total = 0 
-	for a in 1..(perim-1)
-		for b in 1..(a-1)
-			next if !isEven?(getCsq(a, b))
-			c = getRt(getCsq(a, b))
-			if equalsPerim?(a,b,c,perim)
+	for a in 2..(perim/3)
+		for b in a+1..(perim/2)
+			cSq = getCsq(a,b)
+			next if !isEven?(cSq)
+			c = getRt(cSq)
+			test = getPerim(a,b,c)
+			if test == perim
 				total += 1
+			elsif test > perim
+				break
 			end
 		end
 	end
