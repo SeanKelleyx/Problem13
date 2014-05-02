@@ -1,13 +1,7 @@
 #! /usr/bin/ruby
 
 def getNums()
-	arr = [0]
-	x = 10
-	while arr.length < 1000002
-		arr += x.to_s.chars.map(&:to_i)
-		x +=1
-	end
-	return arr
+	return (0..200000).map(&:to_s).join.chars.map(&:to_i)
 end
 
 def run()
