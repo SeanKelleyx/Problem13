@@ -2,7 +2,7 @@
 
 def getTris()
         tris = []
-        for x in 286..50000
+        for x in 286..200000
                 tris << (x*(x+1))/2
         end
         return tris
@@ -10,7 +10,7 @@ end
 
 def getPents()
         pents = []
-        for x in 165..35000
+        for x in 165..120000
                 pents << (x*((3*x)-1))/2
         end
         return pents
@@ -18,7 +18,7 @@ end
 
 def getHex()
         hex = []
-        for x in 143..25000
+        for x in 143..100000
                 hex << x*((2*x)-1)
         end
         return hex
@@ -35,9 +35,6 @@ def run()
 	for x in tri
 		if pent.include?(x) && hex.include?(x)
 			return x
-		else
-			pent.reject!{|y| y < x}
-			hex.reject!{|y| y < x}
 		end
 	end
 	return "you need to step up your ciel"
