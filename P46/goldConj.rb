@@ -16,24 +16,32 @@ end
 def nextComp(x)
 	if isPrime(x+2)
 		nextComp(x+2)
-	elsif isComp(x+2)
-		x+2
 	else
-		nextComp(x+2)
+		x+2
 	end
 end
  
-def isComp(x)
-	for y in 1..
-
-
-	for y in 1..x
-		if isPrime(x - 2*(y*y))
+def isConj(x)
+	for y in 1..(x-1)
+		if (x-2*(y*y))<2
+			return false		
+		elsif isPrime(x - 2*(y*y))
 			return true
-		elsif
 		end
- 
+	end
+	return false 
 end
 
 def run()
+	i = 9
+	while true
+		if isConj(i)
+			i = nextComp(i)
+		else 
+			return i
+		end
+	end
+end
+
+puts run()
 	
